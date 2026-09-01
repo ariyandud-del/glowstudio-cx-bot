@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Studio — Portal Sign In</title>
+<meta name="description" content="Sign in to Glow Studio Salon Retention & Staff Portal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ─── DUAL-THEME TOKENS MATCHING DASHBOARD ─── */
+  :root[data-theme="light"] {
+    --bg-page: #F4F7FB;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --bg-card-solid: #FFFFFF;
+    --bg-input: rgba(255, 255, 255, 0.85);
+    --bg-pill: rgba(248, 250, 252, 0.75);
+    --border-color: rgba(255, 255, 255, 0.85);
+    --border-subtle: rgba(226, 232, 240, 0.7);
+    --border-hover: rgba(13, 148, 136, 0.35);
+    --border-focus: #0D9488;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #8492A6;
+    --accent-teal: #0D9488;
+    --accent-teal-glow: rgba(13, 148, 136, 0.3);
+    --accent-cyan: #0284C7;
+    --accent-cyan-light: #E0F2FE;
+    --card-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.02);
+  }
+
+  :root[data-theme="dark"] {
+    --bg-page: #0B0F17;
+    --bg-card: rgba(18, 25, 38, 0.78);
+    --bg-card-solid: #151D2A;
+    --bg-input: rgba(15, 23, 42, 0.75);
+    --bg-pill: rgba(30, 41, 59, 0.55);
+    --border-color: rgba(255, 255, 255, 0.09);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(20, 184, 166, 0.4);
+    --border-focus: #14B8A6;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-teal: #14B8A6;
+    --accent-teal-glow: rgba(20, 184, 166, 0.35);
+    --accent-cyan: #38BDF8;
+    --accent-cyan-light: rgba(56, 189, 248, 0.18);
+    --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Ambient Mesh matching Dashboard (Zero Violet) */
+  :root[data-theme="light"] body {
+    background: 
+      radial-gradient(circle at 10% 12%, rgba(204, 251, 241, 0.85) 0%, transparent 45%),
+      radial-gradient(circle at 92% 10%, rgba(224, 242, 254, 0.9) 0%, transparent 48%),
+      radial-gradient(circle at 50% 92%, rgba(204, 251, 241, 0.75) 0%, transparent 52%),
+      radial-gradient(circle at 88% 85%, rgba(254, 243, 199, 0.65) 0%, transparent 42%),
+      #F4F7FB;
+    background-attachment: fixed;
+  }
+
+  :root[data-theme="dark"] body {
+    background: 
+      radial-gradient(circle at 15% 15%, rgba(15, 118, 110, 0.28) 0%, transparent 50%),
+      radial-gradient(circle at 88% 12%, rgba(2, 132, 199, 0.22) 0%, transparent 50%),
+      radial-gradient(circle at 50% 88%, rgba(30, 58, 138, 0.28) 0%, transparent 50%),
+      radial-gradient(circle at 85% 80%, rgba(180, 83, 9, 0.18) 0%, transparent 40%),
+      #0B0F17;
+    background-attachment: fixed;
+  }
+
+  .top-bar {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .theme-toggle-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .theme-toggle-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+  }
+  .theme-toggle-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* Frosted Glass Login Container */
+  .login-card-container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 38px 34px 32px;
+    box-shadow: var(--card-shadow);
+    animation: cardAppear 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes cardAppear {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .brand-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .brand-emblem {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    border-radius: 14px;
+    background: var(--bg-pill);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .brand-title {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .brand-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* CoachPro Active Pill Role Selector */
+  .role-segmented-control {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bg-pill);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 22px;
+    gap: 4px;
+  }
+  .role-segment-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 12px;
+    border-radius: 11px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+  }
+  .role-segment-btn:hover { color: var(--text-primary); }
+  .role-segment-btn.active {
+    background: linear-gradient(135deg, #0D9488 0%, #059669 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px var(--accent-teal-glow);
+    font-weight: 700;
+  }
+  .role-segment-btn svg { width: 15px; height: 15px; fill: currentColor; }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    width: 17px;
+    height: 17px;
+    fill: var(--text-muted);
+    pointer-events: none;
+    transition: fill 0.2s;
+  }
+  .form-control {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 11px 14px 11px 42px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+  }
+  .form-control:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+  }
+  .form-control:focus + .input-icon {
+    fill: var(--accent-teal);
+  }
+  .form-control::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.8 !important;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+  }
+
+  .password-toggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .password-toggle:hover { color: var(--text-primary); }
+  .password-toggle svg { width: 17px; height: 17px; fill: currentColor; }
+
+  .options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin: 6px 0 20px;
+  }
+  .remember-toggle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .remember-toggle input[type="checkbox"] {
+    accent-color: var(--accent-teal);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+  }
+  .forgot-link {
+    color: var(--accent-teal);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .forgot-link:hover { text-decoration: underline; }
+
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #0D9488 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 13px 18px;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 6px 18px var(--accent-teal-glow);
+    transition: all 0.2s ease;
+  }
+  .btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px var(--accent-teal-glow);
+    filter: brightness(1.05);
+  }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit svg { width: 15px; height: 15px; fill: currentColor; }
+
+  .spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .demo-strip {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .demo-strip-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+  }
+  .demo-buttons-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .btn-demo-quick {
+    background: var(--bg-pill);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+  }
+  .btn-demo-quick:hover {
+    border-color: var(--accent-teal);
+    background: var(--bg-input);
+    color: var(--accent-teal);
+    transform: translateY(-1px);
+  }
+  .btn-demo-quick svg { width: 14px; height: 14px; fill: currentColor; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    background: var(--bg-card-solid);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 12px 20px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+    backdrop-filter: blur(20px);
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .toast svg { width: 16px; height: 16px; fill: var(--accent-teal); }
+</style>
+</head>
+<body>
+
+<!-- Top Theme Switcher -->
+<div class="top-bar">
+  <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">
+    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+    <span id="themeLabel">Dark Mode</span>
+  </button>
+</div>
+
+<!-- Centered Login Card -->
+<main class="login-card-container">
+  
+  <div class="brand-header">
+    <div class="brand-emblem">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="7" cy="7" r="4" fill="#0D9488" />
+        <circle cx="17" cy="7" r="4" fill="#0284C7" />
+        <circle cx="7" cy="17" r="4" fill="#D97706" />
+        <circle cx="17" cy="17" r="4" fill="#059669" />
+      </svg>
+    </div>
+    <h1 class="brand-title brand-name">GlowStudio</h1>
+    <p class="brand-subtitle">Sign in to access your role-based salon portal</p>
+  </div>
+
+  <!-- Role Selector -->
+  <div class="role-segmented-control">
+    <button type="button" class="role-segment-btn active" id="btnRoleOwner" onclick="switchRole('owner')">
+      <svg viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1v-1h14v1z"/></svg>
+      Salon Owner
+    </button>
+    <button type="button" class="role-segment-btn" id="btnRoleStaff" onclick="switchRole('staff')">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      Stylist / Staff
+    </button>
+  </div>
+
+  <!-- Auth Form -->
+  <form onsubmit="handleAuthSubmit(event)">
+    <div class="form-group">
+      <label for="userEmail">Email or Username</label>
+      <div class="input-wrapper">
+        <svg class="input-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <input type="text" id="userEmail" class="form-control" placeholder="owner@glowstudio.in" value="owner@glowstudio.in" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userPassword">Password</label>
+      <div class="input-wrapper">
+        <svg class="input-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <input type="password" id="userPassword" class="form-control" placeholder="••••••••" value="••••••••" required>
+        <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Toggle password visibility">
+          <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="options-row">
+      <label class="remember-toggle">
+        <input type="checkbox" checked id="rememberBox">
+        <span>Remember me</span>
+      </label>
+      <a href="javascript:void(0)" class="forgot-link" onclick="displayToast('Password reset instructions sent to registered contact')">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="btn-submit" id="submitBtn">
+      <span class="spinner" id="btnSpinner"></span>
+      <span id="btnText">Sign In to Dashboard</span>
+      <svg id="btnArrow" viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/></svg>
+    </button>
+  </form>
+
+  <!-- 1-Click Fast Demo Logins -->
+  <div class="demo-strip">
+    <span class="demo-strip-label">1-Click Fast Demo Logins</span>
+    <div class="demo-buttons-row">
+      <button type="button" class="btn-demo-quick" onclick="fastLogin('owner')" title="Login as Salon Owner">
+        <svg viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1v-1h14v1z"/></svg>
+        Owner (Ananya)
+      </button>
+      <button type="button" class="btn-demo-quick" onclick="fastLogin('staff')" title="Login as Stylist Priya">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Stylist (Priya)
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="appToast">
+  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+  <span id="toastMessage">Authenticated!</span>
+</div>
+
+<script>
+// ── Theme Manager ──
+let currentTheme = localStorage.getItem('glow_theme') || 'light';
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('glow_theme', theme);
+
+  const icon = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if (theme === 'light') {
+    icon.innerHTML = '<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>';
+    label.textContent = 'Dark Mode';
+  } else {
+    icon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>';
+    label.textContent = 'Light Mode';
+  }
+}
+
+function toggleTheme() {
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+}
+
+applyTheme(currentTheme);
+
+// Load dynamic brand name from storage
+(function loadBrand() {
+  try {
+    const saved = localStorage.getItem('glow_salon_profile');
+    if (saved) {
+      const config = JSON.parse(saved);
+      if (config.salonName) {
+        document.querySelectorAll('.brand-name').forEach(el => el.textContent = config.salonName);
+      }
+    }
+  } catch (e) {}
+})();
+
+// ── Role Segment Control ──
+let selectedRole = 'owner';
+
+function switchRole(role) {
+  selectedRole = role;
+  const btnOwner = document.getElementById('btnRoleOwner');
+  const btnStaff = document.getElementById('btnRoleStaff');
+  const emailInput = document.getElementById('userEmail');
+
+  if (role === 'owner') {
+    btnOwner.classList.add('active');
+    btnStaff.classList.remove('active');
+    emailInput.value = 'owner@glowstudio.in';
+  } else {
+    btnStaff.classList.add('active');
+    btnOwner.classList.remove('active');
+    emailInput.value = 'priya@glowstudio.in';
+  }
+}
+
+function togglePassword() {
+  const pwd = document.getElementById('userPassword');
+  pwd.type = (pwd.type === 'password') ? 'text' : 'password';
+}
+
+function displayToast(msg) {
+  const toast = document.getElementById('appToast');
+  document.getElementById('toastMessage').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+function fastLogin(role) {
+  switchRole(role);
+  performAuth(role);
+}
+
+function handleAuthSubmit(e) {
+  e.preventDefault();
+  performAuth(selectedRole);
+}
+
+function performAuth(role) {
+  const spinner = document.getElementById('btnSpinner');
+  const arrow = document.getElementById('btnArrow');
+  const btnText = document.getElementById('btnText');
+  const btn = document.getElementById('submitBtn');
+
+  if (spinner) spinner.style.display = 'inline-block';
+  if (arrow) arrow.style.display = 'none';
+  if (btnText) btnText.textContent = 'Authenticating...';
+  if (btn) btn.disabled = true;
+
+  localStorage.setItem('user_role', role);
+  sessionStorage.setItem('glow_authenticated', 'true');
+  
+  const roleLabel = (role === 'owner') ? 'Salon Owner' : 'Priya (Stylist)';
+  displayToast(`✓ Signed in as ${roleLabel}! Redirecting...`);
+
+  setTimeout(() => {
+    window.location.href = `dashboard.html?role=${role}`;
+  }, 400);
+}
+</script>
+
+</body>
+</html>
