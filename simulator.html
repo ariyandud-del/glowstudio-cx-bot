@@ -104,6 +104,43 @@
   .badge .dot.yellow { background: var(--warning); box-shadow: 0 0 6px var(--warning); }
   .badge .dot.blue { background: var(--info); box-shadow: 0 0 6px var(--info); }
 
+  /* ─── CX BADGE SYSTEM (VIP Crown / NEW Sparkle) ─── */
+  .cx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1.5px 7px 1.5px 5px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: 1;
+    animation: cxBadgeFadeIn 0.4s ease;
+  }
+  .cx-badge svg {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .cx-badge--vip {
+    background: rgba(251, 191, 36, 0.18);
+    color: #FBBF24;
+    border: 1px solid rgba(251, 191, 36, 0.25);
+  }
+  .cx-badge--new {
+    background: rgba(20, 184, 166, 0.18);
+    color: #14B8A6;
+    border: 1px solid rgba(20, 184, 166, 0.25);
+  }
+  @keyframes cxBadgeFadeIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
   /* ─── MAIN LAYOUT ─── */
   .main-layout {
     display: flex;
@@ -773,11 +810,11 @@
         <div class="flow-step" id="flowStep2">
           <div class="connector"><div class="node">2</div><div class="line"></div></div>
           <div class="step-content">
-            <div class="step-title">24h Pre-Visit Confirmation</div>
-            <div class="step-desc">Pre-appointment check-in & slot lock</div>
+            <div class="step-title">6h Pre-Visit Confirmation</div>
+            <div class="step-desc">Pre-appointment check-in & slot lock (6h prior)</div>
             <button class="trigger-btn" onclick="step2_confirm()" id="btn2" disabled style="margin-top:8px;">
               <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></span>
-              Send 24h Confirmation
+              Send 6h Confirmation
             </button>
           </div>
         </div>
@@ -1229,10 +1266,10 @@ function sendMessage() {
       }
     }
 
-    // ── STEP 2: 24h Confirmation ──
+    // ── STEP 2: 6h Confirmation ──
     if (currentStep === 2) {
       if (lower.includes('confirm') || lower === 'yes' || lower === 'ok' || lower === 'okay' || lower.includes('all set') || lower.includes('lock') || lower.includes('sure')) {
-        addSystemBubble("Awesome! You're all set and confirmed for <b>tomorrow at 2:00 PM</b> with " + currentStylist + "! 😊✨").then(() => {
+        addSystemBubble("Awesome, Neha! Your VIP station is prepped and confirmed for <b>today at 2:00 PM</b> with " + currentStylist + "! 😊✨").then(() => {
           markStepCompleted(2); markStepActive(3); currentStep = 3;
           const btn3 = document.getElementById('btn3');
           if (btn3) { btn3.disabled = false; btn3.classList.add('pulse'); }
@@ -1391,19 +1428,19 @@ function step1() {
   addDateDivider('Today');
   
   addInteractiveButtonsMessage(
-    "Hi Neha! 👋 It's been <b>5 weeks</b> since your last colour service at Glow Studio. Would you like to book your touch-up? 💇♀️",
+    "Hi Neha! 👑 As one of our cherished VIP clients, we wanted to ensure your signature colour stays radiant. It's been <b>5 weeks</b> since your last visit. Would you like priority booking for your touch-up with Priya? 💇‍♀️",
     [
       { label: "✅ Yes, book me", action: () => { addUserBubble("Yes, book me"); currentStep = 1; step2_slots(); } },
       { label: "⏰ Remind me later", action: () => {
         addUserBubble("Remind me later");
-        addSystemBubble("No problem at all! We'll check in with you next week. Have a great day! 🙂✨").then(() => {
+        addSystemBubble("No problem at all, Neha! As our VIP, your priority booking is always open whenever you're ready. Have a wonderful day! 🙂✨").then(() => {
           markStepCompleted(1); markStepActive(2); currentStep = 2;
           document.getElementById('btn2').disabled = false;
           document.getElementById('btn2').classList.add('pulse');
         });
       }}
     ],
-    "Glow Studio • Automated Reminder"
+    "Glow Studio • VIP Priority Reminder"
   );
 }
 
@@ -1449,9 +1486,9 @@ function step2_slots() {
   };
 
   addInteractiveListMessage(
-    "💇‍♀️ Glow Studio Live Booking",
-    `Great! Here is the live available schedule with <b>${currentStylist}</b> this week. Tap below to browse and select a slot. 📅`,
-    "Tap to view all available slots",
+    "💇‍♀️ Glow Studio VIP Priority Booking",
+    `Here is your exclusive VIP access to <b>${currentStylist}'s</b> schedule this week. Tap below to reserve your slot: 📅`,
+    "Tap to view VIP priority slots",
     "📋 View Available Slots",
     listSheetData
   );
@@ -1466,7 +1503,7 @@ function handleSlotSelection(day, time, context = "rebooking") {
       const bookingId = "#GS-" + Math.floor(1000 + Math.random() * 9000);
       const slotStr = `${day} at ${time}`;
       
-      const confirmMsg = `🎉 <b>Slot Assigned & Confirmed!</b>\n\n📅 <b>${slotStr}</b>\n👤 Stylist: <b>${currentStylist}</b>\n🎫 Booking ID: <b>${bookingId}</b>\n\nWe've reserved this slot for you. See you on ${day}! 💕`;
+      const confirmMsg = `🎉 <b>VIP Slot Confirmed!</b>\n\n📅 <b>${slotStr}</b>\n👤 Stylist: <b>${currentStylist}</b>\n🎫 Booking ID: <b>${bookingId}</b>\n\nYour priority station is reserved with ${currentStylist}. Complimentary salon refreshments await you! See you on ${day}! 💕`;
       
       addSystemBubble(confirmMsg).then(() => {
         if (context === "rebooking") {
@@ -1487,20 +1524,20 @@ function handleSlotSelection(day, time, context = "rebooking") {
   });
 }
 
-// ─── STEP 2: 24H PRE-VISIT CONFIRMATION & RESCHEDULE ───
+// ─── STEP 2: 6H PRE-VISIT CONFIRMATION & RESCHEDULE ───
 function step2_confirm() {
   currentStep = 2;
   pendingFlowContext = "reschedule";
   document.getElementById('btn2').disabled = true;
   document.getElementById('btn2').classList.remove('pulse');
-  addDateDivider('Friday (24h Before)');
+  addDateDivider('Saturday (6h Before Visit)');
   
   addInteractiveButtonsMessage(
-    `Hi Neha! 📅 Just a reminder — your appointment is <b>tomorrow at 2:00 PM</b> with ${currentStylist}.\n\nReply to confirm 👇`,
+    `Hi Neha! 👑 Friendly check-in for our VIP guest — your appointment is in <b>6 hours (today at 2:00 PM)</b> with ${currentStylist}.\n\nPlease confirm your arrival below so our team can prepare your dedicated styling station 👇`,
     [
       { label: "✅ Confirmed!", action: () => {
         addUserBubble("Confirmed!");
-        addSystemBubble("Awesome! You're all set. See you tomorrow at 2:00 PM! 😊✨").then(() => {
+        addSystemBubble("Awesome, Neha! Your VIP station is prepped. See you in a few hours at 2:00 PM! 😊✨").then(() => {
           markStepCompleted(2); markStepActive(3); currentStep = 3;
           document.getElementById('btn3').disabled = false;
           document.getElementById('btn3').classList.add('pulse');
@@ -1512,7 +1549,7 @@ function step2_confirm() {
         showRescheduleListMessage();
       }}
     ],
-    "Glow Studio • 24h Check-in"
+    "Glow Studio • 6h VIP Check-in"
   );
 }
 
@@ -1555,17 +1592,17 @@ function step3_feedback() {
   addDateDivider('Saturday Evening (Post-Visit)');
   
   addInteractiveButtonsMessage(
-    `Hi Neha! 💖 Thank you for visiting Glow Studio today! We hope you loved your new colour service.\n\nHow would you rate your experience with ${currentStylist}?`,
+    `Hi Neha! 👑 Thank you for being such a wonderful VIP guest at Glow Studio today! We hope you loved your signature colour service.\n\nHow would you rate your VIP experience with ${currentStylist}?`,
     [
       { label: "⭐⭐⭐⭐⭐ Loved it!", action: () => {
         addUserBubble("⭐⭐⭐⭐⭐ Loved it!");
-        addSystemBubble("That makes our day! 🥰 Would you mind leaving us a quick Google review?\n\n👉 <b><u>Leave a Review</u></b>").then(() => {
+        addSystemBubble("That makes our day, Neha! 🥰 As a valued VIP, your support means the world to us. Would you mind leaving a quick Google review?\n\n👉 <b><u>Leave a Review</u></b>").then(() => {
           addInteractiveButtonsMessage(
-            "Share your experience on Google to help others find Glow Studio! ✨",
+            "Share your VIP experience on Google to help others find Glow Studio! ✨",
             [
               { label: "📝 Sure, happy to!", action: () => {
                 addUserBubble("Sure, happy to!");
-                addSystemBubble("Thank you so much, Neha! 🙏 See you next time! 💕").then(() => {
+                addSystemBubble("Thank you so much, Neha! 🙏 We look forward to pampering you on your next visit! 💕").then(() => {
                   markStepCompleted(3); markStepActive(4); currentStep = 4;
                   document.getElementById('btn4').disabled = false;
                   document.getElementById('btn4').classList.add('pulse');
@@ -1574,7 +1611,7 @@ function step3_feedback() {
               }},
               { label: "🙅 Maybe later", action: () => {
                 addUserBubble("Maybe later");
-                addSystemBubble("No problem! We appreciate your visit. 💕").then(() => {
+                addSystemBubble("No problem at all! We truly appreciate having you as our VIP client. 💕").then(() => {
                   markStepCompleted(3); markStepActive(4); currentStep = 4;
                   document.getElementById('btn4').disabled = false;
                   document.getElementById('btn4').classList.add('pulse');
@@ -1587,7 +1624,7 @@ function step3_feedback() {
       }},
       { label: "⭐⭐⭐⭐ Good", action: () => {
         addUserBubble("⭐⭐⭐⭐ Good");
-        addSystemBubble("Thanks for the feedback! We're constantly striving for 5 stars. See you next time! 💕").then(() => {
+        addSystemBubble("Thanks for the feedback, Neha! We're constantly striving for 5-star perfection for our VIP guests. See you next time! 💕").then(() => {
           markStepCompleted(3); markStepActive(4); currentStep = 4;
           document.getElementById('btn4').disabled = false;
           document.getElementById('btn4').classList.add('pulse');
@@ -1596,7 +1633,7 @@ function step3_feedback() {
       }},
       { label: "⭐⭐⭐ Needs review", action: () => {
         addUserBubble("⭐⭐⭐ Needs review");
-        addSystemBubble("We're sorry, Neha. 😔 Our salon manager Ananya will reach out shortly to make things right. 🙏").then(() => {
+        addSystemBubble("We're so sorry, Neha. 😔 As our VIP client, your complete satisfaction is paramount. Our salon manager Ananya will reach out personally within the hour to make this right. 🙏").then(() => {
           markStepCompleted(3); markStepActive(4); currentStep = 4;
           document.getElementById('btn4').disabled = false;
           document.getElementById('btn4').classList.add('pulse');
@@ -1604,7 +1641,7 @@ function step3_feedback() {
         });
       }}
     ],
-    "Glow Studio • Client Experience"
+    "Glow Studio • VIP Experience Review"
   );
 }
 
@@ -1616,7 +1653,7 @@ function step4_retail() {
   addDateDivider('10 Days Later (Retail Nudge)');
   
   const retailProductSheet = {
-    title: "Salon Color-Care Products (15% Off)",
+    title: "Salon Color-Care Products (15% VIP Off)",
     sections: [
       {
         title: "COLOR-PROTECT ESSENTIALS",
@@ -1653,8 +1690,8 @@ function step4_retail() {
 
   addInteractiveListMessage(
     "🧴 Glow Studio Home-Care Nudge",
-    "Hi Neha! 🌸 Hope you're loving your fresh colour from your visit with Priya!\n\nTo prevent colour fading and maintain that salon gloss, your recommended color-care routine is <b>15% off</b> this week. Tap below to browse products 👇",
-    "Glow Studio • VIP Client Care",
+    "Hi Neha! 🌸 Hope you're loving your fresh colour from your VIP session with Priya!\n\nTo keep that salon-grade vibrancy, your personalized color-care routine is <b>15% off</b> this week with exclusive VIP pricing. Tap below to browse 👇",
+    "Glow Studio • VIP Client Care \u{1F451}",
     "🛍️ View Care Products (15% Off)",
     retailProductSheet,
     "assets/salon_retail_products.jpg"

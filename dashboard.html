@@ -496,6 +496,174 @@
     font-size: 11px;
     color: var(--text-secondary);
   }
+
+  /* ─── CX BADGE SYSTEM (VIP Crown / NEW Sparkle) ─── */
+  .cx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1.5px 7px 1.5px 5px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: 1;
+    animation: cxBadgeFadeIn 0.4s ease;
+  }
+  .cx-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .cx-badge--vip {
+    background: var(--accent-amber-light);
+    color: var(--accent-amber);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+  .cx-badge--new {
+    background: var(--accent-teal-light);
+    color: var(--accent-teal);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+  }
+  .cx-badge--blacklisted {
+    background: rgba(239, 68, 68, 0.14);
+    color: #EF4444;
+    border: 1px solid rgba(239, 68, 68, 0.28);
+  }
+  :root[data-theme="dark"] .cx-badge--vip {
+    border-color: rgba(251, 191, 36, 0.25);
+  }
+  :root[data-theme="dark"] .cx-badge--new {
+    border-color: rgba(20, 184, 166, 0.25);
+  }
+  :root[data-theme="dark"] .cx-badge--blacklisted {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.35);
+  }
+  @keyframes cxBadgeFadeIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ─── STAFF & OWNER BLACKLIST CONTROL STYLES ─── */
+  .staff-blacklist-alert {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    animation: cxBadgeFadeIn 0.3s ease;
+  }
+  :root[data-theme="dark"] .staff-blacklist-alert {
+    background: rgba(239, 68, 68, 0.16);
+    border-color: rgba(248, 113, 113, 0.35);
+  }
+  .btn-flag-blacklist {
+    background: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .btn-flag-blacklist:hover {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: #DC2626;
+    transform: translateY(-1px);
+  }
+  :root[data-theme="dark"] .btn-flag-blacklist {
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.35);
+  }
+  .btn-restore-client {
+    background: rgba(13, 148, 136, 0.12);
+    color: var(--accent-teal);
+    border: 1px solid rgba(13, 148, 136, 0.25);
+    border-radius: 7px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .btn-restore-client:hover {
+    background: rgba(13, 148, 136, 0.2);
+    border-color: var(--accent-teal);
+  }
+  .chip-btn.chip-blacklist {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.08);
+    color: #DC2626;
+  }
+  :root[data-theme="dark"] .chip-btn.chip-blacklist {
+    color: #F87171;
+    background: rgba(239, 68, 68, 0.16);
+  }
+  .select-pill.blacklist-pill {
+    background: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    transition: all 0.2s ease;
+  }
+  .select-pill.blacklist-pill:hover {
+    background: rgba(239, 68, 68, 0.18);
+    transform: translateY(-1px);
+  }
+  :root[data-theme="dark"] .select-pill.blacklist-pill {
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.35);
+  }
+  .btn-review-flag {
+    background: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .btn-review-flag:hover {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: #DC2626;
+  }
+  :root[data-theme="dark"] .btn-review-flag {
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.35);
+  }
+  .client-row.row-blacklisted {
+    background: rgba(239, 68, 68, 0.035);
+  }
+  :root[data-theme="dark"] .client-row.row-blacklisted {
+    background: rgba(239, 68, 68, 0.07);
+  }
   .slot-footer-row {
     display: flex;
     align-items: center;
@@ -702,6 +870,11 @@
     height: 250px;
     background: radial-gradient(circle, var(--accent-teal-light) 0%, transparent 70%);
     pointer-events: none;
+  }
+  .greeting-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
   .greeting-left h2 {
     font-size: 19px;
@@ -1294,6 +1467,21 @@
     overflow: hidden;
     flex-shrink: 0;
   }
+  .client-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  .client-phone {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
   .client-avatar img {
     width: 100%;
     height: 100%;
@@ -1331,6 +1519,16 @@
   .status-badge.new-client {
     background: var(--accent-cyan-light);
     color: var(--accent-cyan);
+  }
+  .status-badge.blacklisted {
+    background: rgba(239, 68, 68, 0.12);
+    color: #DC2626;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+  }
+  :root[data-theme="dark"] .status-badge.blacklisted {
+    background: rgba(239, 68, 68, 0.22);
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.35);
   }
 
   /* ─── DATA TABLE TOOLBAR (SEARCH, FILTER & EXPORT) ─── */
@@ -2150,7 +2348,7 @@
               </div>
             </div>
             <div class="stat-card-value" style="color:var(--accent-coral);" id="ownerNoShows">9</div>
-            <div class="stat-card-delta green">↓ 34% <span class="stat-card-delta subtle">via 24h confirmation nudge</span></div>
+            <div class="stat-card-delta green">↓ 34% <span class="stat-card-delta subtle">via 6h confirmation nudge</span></div>
           </div>
 
           <!-- Card 3: Retained Revenue -->
@@ -2177,6 +2375,27 @@
             <div class="stat-card-delta subtle">10% platform performance fee on ₹38.2K</div>
           </div>
 
+        </div>
+
+        <!-- Staff Discretionary Blacklist Alert Banner for Owner -->
+        <div class="owner-risk-alert-bar" id="ownerBlacklistAlertBar" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); border-radius:14px; padding:12px 18px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:10px; background:rgba(239,68,68,0.15); color:#DC2626; flex-shrink:0;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:8px;">
+                <span>Staff Discretionary Blacklist:</span>
+                <span id="ownerRiskCount" style="color:#DC2626; background:rgba(239,68,68,0.12); padding:1px 8px; border-radius:12px; font-size:11.5px; border:1px solid rgba(239,68,68,0.2);">1 Member Flagged</span>
+              </div>
+              <p style="font-size:11.5px; color:var(--text-secondary); margin:2px 0 0 0; line-height:1.4;">
+                Front-desk staff have flagged problem clients to protect stylists from repetitive no-shows and booking abuse.
+              </p>
+            </div>
+          </div>
+          <button type="button" class="btn-review-flag" onclick="switchView('clients'); filterByBlacklist();" style="padding:7px 14px; font-size:12px; border-radius:9px; cursor:pointer;">
+            Review in Client CRM →
+          </button>
         </div>
 
         <!-- ══════════════════════════════════════════════════
@@ -2445,8 +2664,8 @@
                 <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
               </div>
               <div class="insight-content">
-                <h4>24h Confirmation Cutting No-Shows by ~34%</h4>
-                <p>Example: Clients who receive a 24h WhatsApp confirmation with a 1-tap reschedule option show a 34% lower no-show rate. Each recovered slot is worth ₹800–₹2,500 in retained revenue.</p>
+                <h4>6h Confirmation Cutting No-Shows by ~34%</h4>
+                <p>Example: Clients who receive a 6h WhatsApp confirmation with a 1-tap reschedule option show a 34% lower no-show rate. Each recovered slot is worth ₹800–₹2,500 in retained revenue.</p>
               </div>
             </div>
 
@@ -2472,7 +2691,7 @@
             </div>
             <div class="stat-card-value" id="todayApptCount">8 Booked</div>
             <div class="stat-card-delta green">
-              5 confirmed via WhatsApp 24h nudge
+              5 confirmed via WhatsApp 6h nudge
             </div>
           </div>
 
@@ -2533,7 +2752,7 @@
                       <img src="assets/avatar_female.png" alt="Neha K.">
                     </div>
                     <div>
-                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Neha K. <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Balayage Touchup)</span></div>
+                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Neha K. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span> <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Balayage Touchup)</span></div>
                       <div style="font-size:11px; color:var(--text-muted);">Stylist: Priya • Prefers ammonia-free</div>
                     </div>
                   </div>
@@ -2573,8 +2792,8 @@
                       <img src="assets/avatar_male.png" alt="Aman P.">
                     </div>
                     <div>
-                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Aman P. <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Haircut &amp; Styling)</span></div>
-                      <div style="font-size:11px; color:var(--text-muted);">Stylist: Rohit • Classic fade</div>
+                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Aman P. <span class="cx-badge cx-badge--new"><svg viewBox="0 0 24 24"><path d="M12 2l1.09 3.41L16.5 4l-1.41 3.41L18.5 8.5l-3.41 1.09L16.5 13l-3.41-1.41L12 15l-1.09-3.41L7.5 13l1.41-3.41L5.5 8.5l3.41-1.09L7.5 4l3.41 1.41L12 2zm-6 14l.72 2.22L9 17.5l-1.28.72L8.44 21 6 19.72 3.56 21l.72-2.78L3 17.5l2.28-.28L6 16zm12 0l.72 2.22L21 17.5l-1.28.72L20.44 21 18 19.72 15.56 21l.72-2.78L15 17.5l2.28-.28L18 16z"/></svg>NEW</span> <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Haircut &amp; Styling)</span></div>
+                      <div style="font-size:11px; color:var(--text-muted);">Stylist: Rohit • First visit</div>
                     </div>
                   </div>
                   <div style="display:flex; align-items:center; gap:6px;">
@@ -2593,7 +2812,7 @@
                       <img src="assets/avatar_female.png" alt="Tanya V.">
                     </div>
                     <div>
-                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Tanya V. <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Hair Spa)</span></div>
+                      <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Tanya V. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span> <span style="font-size:11px; font-weight:500; color:var(--text-secondary);">(Hair Spa)</span></div>
                       <div style="font-size:11px; color:var(--text-muted);">Stylist: Priya • Rebooked via 5-wk nudge</div>
                     </div>
                   </div>
@@ -2693,15 +2912,19 @@
                 <div class="quick-chips-row">
                   <button type="button" class="chip-btn" onclick="quickFillPhone('9820123456')">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    9820123456 (Neha - Returning)
+                    9820123456 (Neha — VIP)
                   </button>
                   <button type="button" class="chip-btn" onclick="quickFillPhone('9123456780')">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    9123456780 (Ritu - Returning)
+                    9123456780 (Ritu — Returning)
                   </button>
                   <button type="button" class="chip-btn" onclick="quickFillPhone('9988001122')">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                     9988001122 (New Client)
+                  </button>
+                  <button type="button" class="chip-btn chip-blacklist" onclick="quickFillPhone('9876544321')">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+                    9876544321 (Rahul — Blacklisted)
                   </button>
                 </div>
               </div>
@@ -2709,19 +2932,40 @@
 
             <!-- ─── PHASE 2: RETURNING CLIENT LOG ─── -->
             <div id="returningPhaseWrap" style="display:none;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding:10px 14px; background:var(--accent-green-light); border:1px solid var(--accent-green); border-radius:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:10px 14px; background:var(--accent-green-light); border:1px solid var(--accent-green); border-radius:10px;">
                 <div style="display:flex; align-items:center; gap:8px;">
                   <span style="display:flex; align-items:center; color:var(--accent-teal);">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                   </span>
                   <div>
-                    <strong id="foundClientName" style="color:var(--text-primary); font-size:13.5px;">Client Name</strong>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                      <strong id="foundClientName" style="color:var(--text-primary); font-size:13.5px;">Client Name</strong>
+                      <span id="foundClientBadgeWrap"></span>
+                    </div>
                     <div id="foundClientPhone" style="font-size:11px; color:var(--text-secondary);">+91 XXXXX XXXXX</div>
                   </div>
                 </div>
-                <button type="button" class="change-number-link" onclick="resetLookup()" style="font-size:11.5px; color:var(--accent-blue); background:none; border:none; cursor:pointer; font-weight:700; text-decoration:underline;">
-                  Change number
-                </button>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <button type="button" class="btn-flag-blacklist" id="btnFlagReturning" onclick="openBlacklistModal(currentLookupPhone, currentLookupClient ? currentLookupClient.name : 'Client')">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+                    Flag / Blacklist
+                  </button>
+                  <button type="button" class="change-number-link" onclick="resetLookup()" style="font-size:11.5px; color:var(--accent-blue); background:none; border:none; cursor:pointer; font-weight:700; text-decoration:underline;">
+                    Change number
+                  </button>
+                </div>
+              </div>
+
+              <!-- Staff Blacklist Alert Box (Dynamically shown if client is flagged) -->
+              <div class="staff-blacklist-alert" id="returningBlacklistAlert" style="display:none;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div style="font-size:18px;">⛔</div>
+                  <div>
+                    <strong style="color:#DC2626; font-size:12.5px; text-transform:uppercase; letter-spacing:0.3px;">Client Blacklisted (Staff Discretion Active)</strong>
+                    <div id="returningBlacklistReason" style="font-size:11.5px; color:var(--text-secondary); margin-top:2px;">Reason: Repeated No-Shows</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-restore-client" onclick="removeClientFromBlacklist(currentLookupPhone)">✓ Remove Flag</button>
               </div>
 
               <form onsubmit="handleReturningLog(event)">
@@ -2901,7 +3145,7 @@
               <div class="slot-client-row">
                 <img src="assets/avatar_female.png" alt="Client" style="width:26px; height:26px; border-radius:50%;">
                 <div>
-                  <div class="slot-client-name">Neha K.</div>
+                  <div class="slot-client-name">Neha K. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                   <div class="slot-service-tag">Balayage &amp; Gloss Touchup</div>
                 </div>
               </div>
@@ -2964,7 +3208,7 @@
               <div class="slot-client-row">
                 <img src="assets/avatar_female.png" alt="Client" style="width:26px; height:26px; border-radius:50%;">
                 <div>
-                  <div class="slot-client-name">Pooja T.</div>
+                  <div class="slot-client-name">Pooja T. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                   <div class="slot-service-tag">Hair Spa &amp; Keratin Mask</div>
                 </div>
               </div>
@@ -3027,7 +3271,7 @@
               <div class="slot-client-row">
                 <img src="assets/avatar_female.png" alt="Client" style="width:26px; height:26px; border-radius:50%;">
                 <div>
-                  <div class="slot-client-name">Meera R.</div>
+                  <div class="slot-client-name">Meera R. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                   <div class="slot-service-tag">K-Gloss Treatment</div>
                 </div>
               </div>
@@ -3054,7 +3298,7 @@
               <div class="slot-client-row">
                 <img src="assets/avatar_female.png" alt="Client" style="width:26px; height:26px; border-radius:50%;">
                 <div>
-                  <div class="slot-client-name">Kavita B.</div>
+                  <div class="slot-client-name">Kavita B. <span class="cx-badge cx-badge--new"><svg viewBox="0 0 24 24"><path d="M12 2l1.09 3.41L16.5 4l-1.41 3.41L18.5 8.5l-3.41 1.09L16.5 13l-3.41-1.41L12 15l-1.09-3.41L7.5 13l1.41-3.41L5.5 8.5l3.41-1.09L7.5 4l3.41 1.41L12 2zm-6 14l.72 2.22L9 17.5l-1.28.72L8.44 21 6 19.72 3.56 21l.72-2.78L3 17.5l2.28-.28L6 16zm12 0l.72 2.22L21 17.5l-1.28.72L20.44 21 18 19.72 15.56 21l.72-2.78L15 17.5l2.28-.28L18 16z"/></svg>NEW</span></div>
                   <div class="slot-service-tag">Deluxe Pedicure &amp; Blowdry</div>
                 </div>
               </div>
@@ -3090,7 +3334,7 @@
               <div class="slot-client-row">
                 <img src="assets/avatar_male.png" alt="Client" style="width:26px; height:26px; border-radius:50%;">
                 <div>
-                  <div class="slot-client-name">Arjun M.</div>
+                  <div class="slot-client-name">Arjun M. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                   <div class="slot-service-tag">Precision Cut &amp; Beard Sculpt</div>
                 </div>
               </div>
@@ -3378,6 +3622,7 @@
                 <option value="REBOOKED">Bot Rebooked</option>
                 <option value="DUE">Rebooking Due</option>
                 <option value="VIP">VIP Loyal</option>
+                <option value="BLACKLISTED">⛔ Blacklisted Only</option>
               </select>
             </div>
           </div>
@@ -3393,7 +3638,13 @@
               </h2>
               <p style="font-size:12px; color:var(--text-secondary); margin-top:2px;">Full visit history, formulas used, patch tests, and automated WhatsApp touchpoint logs.</p>
             </div>
-            <span class="select-pill" id="clientTotalCountBadge">8 Client Profiles Loaded</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="select-pill blacklist-pill" id="ownerBlacklistBadge" onclick="filterByBlacklist()" style="cursor:pointer;" title="Click to view blacklisted members">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+                1 Member Blacklisted
+              </span>
+              <span class="select-pill" id="clientTotalCountBadge">8 Client Profiles Loaded</span>
+            </div>
           </div>
 
           <div class="table-container">
@@ -3408,22 +3659,23 @@
                   <th>Past Formula / Notes</th>
                   <th>Rebooking Due (5-Wk)</th>
                   <th>WhatsApp Status</th>
+                  <th>Staff / Owner Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="client-row" data-name="neha k" data-stylist="priya" data-status="rebooked">
+                <tr class="client-row" id="row_9820123456" data-phone="9820123456" data-name="neha k" data-stylist="priya" data-status="rebooked">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_female.png" alt="Neha K.">
                       </div>
                       <div>
-                        <div class="client-name">Neha K.</div>
+                        <div class="client-name">Neha K. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                         <div class="client-phone">+91 98201 23456</div>
                       </div>
                     </div>
                   </td>
-                  <td><span class="status-badge reordered" style="font-size:11px;">14 Visits • VIP</span></td>
+                  <td><span class="status-badge reordered" style="font-size:11px;">14 Visits</span></td>
                   <td><span style="font-size:13px; font-weight:800; color:var(--text-primary);">₹48,500</span></td>
                   <td><span style="font-size:12px; font-weight:700; color:var(--text-secondary);">Priya M.</span></td>
                   <td>Balayage &amp; Gloss Touchup</td>
@@ -3435,9 +3687,14 @@
                       Bot Rebooked
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9820123456', 'Neha K.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="ritu s" data-stylist="priya" data-status="rebooked">
+                <tr class="client-row" id="row_9123456780" data-phone="9123456780" data-name="ritu s" data-stylist="priya" data-status="rebooked">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
@@ -3461,21 +3718,26 @@
                       Bot Rebooked
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9123456780', 'Ritu S.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="arjun m" data-stylist="rohan" data-status="rebooked">
+                <tr class="client-row" id="row_9820099887" data-phone="9820099887" data-name="arjun m" data-stylist="rohan" data-status="rebooked">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_male.png" alt="Arjun M.">
                       </div>
                       <div>
-                        <div class="client-name">Arjun M.</div>
+                        <div class="client-name">Arjun M. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                         <div class="client-phone">+91 98200 99887</div>
                       </div>
                     </div>
                   </td>
-                  <td><span class="status-badge reordered" style="font-size:11px;">11 Visits • VIP</span></td>
+                  <td><span class="status-badge reordered" style="font-size:11px;">11 Visits</span></td>
                   <td><span style="font-size:13px; font-weight:800; color:var(--text-primary);">₹16,500</span></td>
                   <td><span style="font-size:12px; font-weight:700; color:var(--text-secondary);">Rohan V.</span></td>
                   <td>Precision Cut &amp; Beard</td>
@@ -3487,16 +3749,21 @@
                       Bot Rebooked
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9820099887', 'Arjun M.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="tanya v" data-stylist="ananya" data-status="rebooked">
+                <tr class="client-row" id="row_9001122334" data-phone="9001122334" data-name="tanya v" data-stylist="ananya" data-status="rebooked">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_female.png" alt="Tanya V.">
                       </div>
                       <div>
-                        <div class="client-name">Tanya V.</div>
+                        <div class="client-name">Tanya V. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                         <div class="client-phone">+91 90011 22334</div>
                       </div>
                     </div>
@@ -3513,9 +3780,14 @@
                       Bot Rebooked
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9001122334', 'Tanya V.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="simran d" data-stylist="priya" data-status="due">
+                <tr class="client-row" id="row_9833477881" data-phone="9833477881" data-name="simran d" data-stylist="priya" data-status="due">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
@@ -3539,21 +3811,26 @@
                       5-Wk Nudge Sent
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9833477881', 'Simran D.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="meera r" data-stylist="ananya" data-status="rebooked">
+                <tr class="client-row" id="row_9811288443" data-phone="9811288443" data-name="meera r" data-stylist="ananya" data-status="rebooked">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_female.png" alt="Meera R.">
                       </div>
                       <div>
-                        <div class="client-name">Meera R.</div>
+                        <div class="client-name">Meera R. <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span></div>
                         <div class="client-phone">+91 98112 88443</div>
                       </div>
                     </div>
                   </td>
-                  <td><span class="status-badge reordered" style="font-size:11px;">9 Visits • VIP</span></td>
+                  <td><span class="status-badge reordered" style="font-size:11px;">9 Visits</span></td>
                   <td><span style="font-size:13px; font-weight:800; color:var(--text-primary);">₹41,200</span></td>
                   <td><span style="font-size:12px; font-weight:700; color:var(--text-secondary);">Ananya S.</span></td>
                   <td>K-Gloss Treatment</td>
@@ -3565,47 +3842,58 @@
                       Bot Rebooked
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9811288443', 'Meera R.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
 
-                <tr class="client-row" data-name="rahul k" data-stylist="rohan" data-status="rebooked">
+                <tr class="client-row row-blacklisted" id="row_9876544321" data-phone="9876544321" data-name="rahul k" data-stylist="rohan" data-status="blacklisted">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_male.png" alt="Rahul K.">
                       </div>
                       <div>
-                        <div class="client-name">Rahul K.</div>
+                        <div class="client-name">Rahul K. <span class="cx-badge cx-badge--blacklisted"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>BLACKLISTED</span></div>
                         <div class="client-phone">+91 98765 44321</div>
                       </div>
                     </div>
                   </td>
-                  <td><span class="status-badge reordered" style="font-size:11px;">4 Visits • Active</span></td>
+                  <td><span class="status-badge blacklisted" style="font-size:11px;">4 Visits • Flagged</span></td>
                   <td><span style="font-size:13px; font-weight:800; color:var(--text-primary);">₹7,200</span></td>
                   <td><span style="font-size:12px; font-weight:700; color:var(--text-secondary);">Rohan V.</span></td>
                   <td>Scalp Detox &amp; Fade</td>
-                  <td><span style="font-size:11px; color:var(--text-secondary);" title="Tea tree scalp scrub. Matte clay styling.">Tea tree scrub + Matte clay</span></td>
-                  <td><span style="font-size:11.5px; font-weight:700; color:var(--accent-teal);">02 Oct (Confirmed)</span></td>
+                  <td><span style="font-size:11px; color:#DC2626;" title="Flagged by Priya M. on 12 Sep: 3 consecutive no-shows.">⛔ Staff Flag: 3 No-Shows...</span></td>
+                  <td><span style="font-size:11.5px; font-weight:700; color:#DC2626;">Restricted / On Hold</span></td>
                   <td>
-                    <span class="status-badge reordered" style="font-size:10px; display:inline-flex; align-items:center; gap:4px;">
-                      <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
-                      Bot Rebooked
+                    <span class="status-badge blacklisted" style="font-size:10px; display:inline-flex; align-items:center; gap:4px;">
+                      <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+                      Staff Blacklisted
                     </span>
+                  </td>
+                  <td>
+                    <button type="button" class="btn-review-flag" onclick="openBlacklistAuditModal('9876544321')">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                      Review Flag
+                    </button>
                   </td>
                 </tr>
 
-                <tr class="client-row" data-name="kavita b" data-stylist="simi" data-status="due">
+                <tr class="client-row" id="row_9920033441" data-phone="9920033441" data-name="kavita b" data-stylist="simi" data-status="due">
                   <td>
                     <div class="client-cell">
                       <div class="client-avatar">
                         <img src="assets/avatar_female.png" alt="Kavita B.">
                       </div>
                       <div>
-                        <div class="client-name">Kavita B.</div>
+                        <div class="client-name">Kavita B. <span class="cx-badge cx-badge--new"><svg viewBox="0 0 24 24"><path d="M12 2l1.09 3.41L16.5 4l-1.41 3.41L18.5 8.5l-3.41 1.09L16.5 13l-3.41-1.41L12 15l-1.09-3.41L7.5 13l1.41-3.41L5.5 8.5l3.41-1.09L7.5 4l3.41 1.41L12 2zm-6 14l.72 2.22L9 17.5l-1.28.72L8.44 21 6 19.72 3.56 21l.72-2.78L3 17.5l2.28-.28L6 16zm12 0l.72 2.22L21 17.5l-1.28.72L20.44 21 18 19.72 15.56 21l.72-2.78L15 17.5l2.28-.28L18 16z"/></svg>NEW</span></div>
                         <div class="client-phone">+91 99200 33441</div>
                       </div>
                     </div>
                   </td>
-                  <td><span class="status-badge reordered" style="font-size:11px;">3 Visits • New</span></td>
+                  <td><span class="status-badge reordered" style="font-size:11px;">3 Visits</span></td>
                   <td><span style="font-size:13px; font-weight:800; color:var(--text-primary);">₹6,300</span></td>
                   <td><span style="font-size:12px; font-weight:700; color:var(--text-secondary);">Simi K.</span></td>
                   <td>Deluxe Pedicure &amp; Blowdry</td>
@@ -3617,12 +3905,144 @@
                       WhatsApp Sent
                     </span>
                   </td>
+                  <td>
+                    <button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('9920033441', 'Kavita B.')">
+                      Flag Client
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ─── STAFF BLACKLIST INCIDENT MODAL ─── -->
+    <div class="brand-modal-backdrop" id="blacklistModalBackdrop" style="display:none;" onclick="if(event.target===this)closeBlacklistModal()">
+      <div class="brand-modal-card" style="max-width:460px;">
+        <div class="brand-modal-header">
+          <h3 class="brand-modal-title" style="display:flex; align-items:center; gap:8px;">
+            <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:rgba(239,68,68,0.15); color:#DC2626;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+            </span>
+            <span>Flag / Blacklist Customer</span>
+          </h3>
+          <button type="button" class="btn-close-modal" onclick="closeBlacklistModal()">×</button>
+        </div>
+
+        <p style="font-size:12px; color:var(--text-secondary); line-height:1.45; margin-bottom:14px;">
+          Staff Discretion Action: Flagging a client restricts online self-booking and flags their profile across the salon network. The salon owner will be notified with your incident report.
+        </p>
+
+        <form onsubmit="confirmBlacklistSubmit(event)" style="display:flex; flex-direction:column; gap:12px;">
+          <input type="hidden" id="blacklistModalPhone">
+          
+          <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:10px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <strong id="blacklistModalClientName" style="font-size:13.5px; color:var(--text-primary);">Client Name</strong>
+              <div id="blacklistModalPhoneDisplay" style="font-size:11.5px; color:var(--text-secondary); margin-top:2px;">+91 XXXXX XXXXX</div>
+            </div>
+            <span class="cx-badge cx-badge--blacklisted">Flagged Target</span>
+          </div>
+
+          <div>
+            <label class="brand-form-label" style="font-size:11.5px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">Incident / Flag Reason *</label>
+            <select id="blacklistReasonSelect" class="brand-form-control" style="width:100%; font-size:13px;" required>
+              <option value="Repeated No-Show / Late Cancellation">Repeated No-Show / Late Cancellation (3+ times)</option>
+              <option value="Rude, Disrespectful or Abusive to Staff">Rude, Disrespectful or Abusive to Salon Staff</option>
+              <option value="Payment Dispute / Unpaid In-Salon Services">Payment Dispute / Unpaid In-Salon Services</option>
+              <option value="Fake Booking / Slot Hoarding Abuse">Fake Booking / Slot Hoarding Abuse</option>
+              <option value="Severe Scalp / Health Safety Discretion">Severe Scalp / Health Safety Discretion</option>
+              <option value="Other Staff Discretion">Other Staff Discretion (See incident notes)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="brand-form-label" style="font-size:11.5px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">Staff Incident Notes &amp; Context *</label>
+            <textarea id="blacklistNotesInput" class="brand-form-control" rows="3" placeholder="Describe the incident (e.g. booked 2 Saturday prime slots, no response to reminder calls, stylists' time lost)..." style="width:100%; font-size:12.5px; resize:vertical;" required></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:8px; padding:8px 12px;">
+            <span style="font-size:11.5px; color:var(--text-muted);">Staff Reporter:</span>
+            <span style="font-size:12px; font-weight:700; color:var(--accent-teal);">Priya M. (Stylist Discretion)</span>
+          </div>
+
+          <div class="brand-modal-actions" style="margin-top:6px; display:flex; justify-content:flex-end; gap:8px;">
+            <button type="button" class="btn-cancel" onclick="closeBlacklistModal()">Cancel</button>
+            <button type="submit" style="background:#DC2626; color:#FFFFFF; border:none; border-radius:10px; padding:9px 18px; font-size:12.5px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+              Confirm Blacklist
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ─── OWNER BLACKLIST AUDIT & REVIEW MODAL ─── -->
+    <div class="brand-modal-backdrop" id="blacklistAuditModalBackdrop" style="display:none;" onclick="if(event.target===this)closeBlacklistAuditModal()">
+      <div class="brand-modal-card" style="max-width:480px;">
+        <div class="brand-modal-header">
+          <h3 class="brand-modal-title" style="display:flex; align-items:center; gap:8px;">
+            <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:rgba(239,68,68,0.15); color:#DC2626;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </span>
+            <span>Blacklist Incident Audit &amp; Review</span>
+          </h3>
+          <button type="button" class="btn-close-modal" onclick="closeBlacklistAuditModal()">×</button>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:12px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <strong id="auditClientName" style="font-size:14px; color:var(--text-primary);">Rahul K.</strong>
+              <div id="auditClientPhone" style="font-size:12px; color:var(--text-secondary); margin-top:2px;">+91 98765 44321</div>
+            </div>
+            <span class="status-badge blacklisted" style="font-size:11px; padding:3px 10px;">⛔ Blacklisted</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:10px; padding:10px 12px;">
+              <span style="font-size:10.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block;">Flagged By</span>
+              <strong id="auditFlaggedBy" style="font-size:12.5px; color:var(--text-primary); margin-top:2px; display:block;">Priya M. (Stylist)</strong>
+            </div>
+            <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:10px; padding:10px 12px;">
+              <span style="font-size:10.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block;">Incident Date</span>
+              <strong id="auditDate" style="font-size:12.5px; color:var(--text-primary); margin-top:2px; display:block;">12 Sep 2026</strong>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:10px; padding:10px 12px;">
+            <span style="font-size:10.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block;">Primary Reason</span>
+            <strong id="auditReason" style="font-size:13px; color:#DC2626; margin-top:2px; display:block;">Repeated No-Show (3 consecutive missed bookings)</strong>
+          </div>
+
+          <div style="background:var(--bg-card-subtle); border:1px solid var(--border-color); border-radius:10px; padding:10px 12px;">
+            <span style="font-size:10.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block;">Staff Notes &amp; Evidence</span>
+            <p id="auditNotes" style="font-size:12px; color:var(--text-secondary); margin-top:4px; line-height:1.45;">
+              Booked prime weekend slots and failed to confirm or answer WhatsApp reminders.
+            </p>
+          </div>
+
+          <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2); border-radius:10px; padding:10px 12px;">
+            <div style="font-size:11px; font-weight:800; color:#DC2626; text-transform:uppercase; letter-spacing:0.4px;">Current Operational Restrictions</div>
+            <ul style="font-size:11.5px; color:var(--text-secondary); margin:4px 0 0 16px; line-height:1.4;">
+              <li>Online WhatsApp self-service booking blocked</li>
+              <li>Front-desk warning displayed upon entering mobile number</li>
+              <li>Automated 5-week retention promos paused for this contact</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <button type="button" class="btn-restore-client" id="btnAuditReinstate" onclick="reinstateFromAuditModal()" style="padding:7px 14px; font-size:12px;">
+              ✓ Owner Override / Reinstate Client
+            </button>
+            <button type="button" class="btn-cancel" onclick="closeBlacklistAuditModal()" style="padding:7px 14px; font-size:12px;">
+              Close Record
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -3851,6 +4271,14 @@ function filterClientTable() {
 
   const badge = document.getElementById('clientTotalCountBadge');
   if (badge) badge.textContent = `${visibleCount} Client Profile${visibleCount === 1 ? '' : 's'} Shown`;
+}
+
+function filterByBlacklist() {
+  const statusSelect = document.getElementById('clientFilterStatus');
+  if (statusSelect) {
+    statusSelect.value = 'BLACKLISTED';
+    filterClientTable();
+  }
 }
 
 // ── Calendar Helpers ──
@@ -4169,10 +4597,18 @@ function updateClientCareProfile(phone) {
   const sens = document.getElementById("careSensitivity");
   const notes = document.getElementById("careNotes");
 
-  if (badge) badge.textContent = profile.name;
-  if (patch) patch.textContent = profile.patchTest;
-  if (sens) sens.textContent = profile.sensitivity;
-  if (notes) notes.textContent = profile.notes;
+  const bInfo = getBlacklistRecord(phone);
+  if (bInfo) {
+    if (badge) badge.innerHTML = `${profile.name} <span class="cx-badge cx-badge--blacklisted" style="margin-left:4px;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>BLACKLISTED</span>`;
+    if (patch) patch.innerHTML = `<span style="color:#DC2626; font-weight:800;">⛔ RESTRICTED</span>`;
+    if (sens) sens.innerHTML = `<span style="color:#DC2626; font-weight:700;">${bInfo.reason}</span>`;
+    if (notes) notes.innerHTML = `<strong style="color:#DC2626;">[Flagged by ${bInfo.flaggedBy} on ${bInfo.date}]:</strong> ${bInfo.notes}`;
+  } else {
+    if (badge) badge.textContent = profile.name;
+    if (patch) patch.textContent = profile.patchTest;
+    if (sens) sens.textContent = profile.sensitivity;
+    if (notes) notes.textContent = profile.notes;
+  }
 }
 
 // ── In-memory client registry ──
@@ -4225,6 +4661,7 @@ function runPhoneLookup() {
     if (badgeEl) badgeEl.textContent = 'Returning Client';
     document.getElementById('foundClientName').textContent = currentLookupClient.name;
     document.getElementById('foundClientPhone').textContent = '+91 ' + raw.slice(0,5) + ' ' + raw.slice(5);
+    updateLoggerBlacklistUI(raw);
     if (lookupWrap) lookupWrap.style.display = 'none';
     if (returningWrap) returningWrap.style.display = 'block';
     if (newClientWrap) newClientWrap.style.display = 'none';
@@ -4238,6 +4675,7 @@ function runPhoneLookup() {
       datePicker.min   = today;
     }
     document.getElementById('newClientPhone').textContent = '+91 ' + raw.slice(0,5) + ' ' + raw.slice(5);
+    updateLoggerBlacklistUI(raw);
     if (lookupWrap) lookupWrap.style.display = 'none';
     if (returningWrap) returningWrap.style.display = 'none';
     if (newClientWrap) newClientWrap.style.display = 'block';
@@ -4256,6 +4694,8 @@ function resetLookup() {
     hintEl.textContent = 'Type 10 digits and press Enter or Continue';
     hintEl.style.color = '';
   }
+  updateClientCareProfile('');
+  updateLoggerBlacklistUI('');
   const lookupWrap = document.getElementById('lookupPhaseWrap');
   const returningWrap = document.getElementById('returningPhaseWrap');
   const newClientWrap = document.getElementById('newClientPhaseWrap');
@@ -4347,7 +4787,8 @@ function handleReturningLog(e) {
     service: service + (isRetailSold ? ' + ' + retail.split(' (')[0] : ''),
     time: "Just now",
     badgeClass: badgeClass,
-    badgeLabel: badgeLabel
+    badgeLabel: badgeLabel,
+    clientType: currentLookupClient && currentLookupClient.visits >= 8 ? 'vip' : ''
   });
 
   saveSyncState(state);
@@ -4391,7 +4832,8 @@ function handleNewClientLog(e) {
     service: serviceText,
     time: "—",
     badgeClass: "new-client",
-    badgeLabel: "New Client"
+    badgeLabel: "New Client",
+    clientType: "new"
   });
 
   saveSyncState(state);
@@ -4673,6 +5115,241 @@ function showToast(msg) {
 <script>
 // ── LocalStorage Cross-Page Sync State Management ──
 
+// ── Customer Blacklist Helpers & Management ──
+function isClientBlacklisted(phone) {
+  const state = getSyncState();
+  return (state.blacklistedClients || []).some(c => c.phone === phone);
+}
+
+function getBlacklistRecord(phone) {
+  const state = getSyncState();
+  return (state.blacklistedClients || []).find(c => c.phone === phone) || null;
+}
+
+function blacklistClient(phone, name, reason, notes, staffName) {
+  const state = getSyncState();
+  if (!state.blacklistedClients) state.blacklistedClients = [];
+
+  const existingIdx = state.blacklistedClients.findIndex(c => c.phone === phone);
+  const record = {
+    phone: phone,
+    name: name,
+    reason: reason || 'Repeated No-Show / Late Cancellation',
+    flaggedBy: staffName || 'Priya M. (Stylist)',
+    date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+    notes: notes || 'Flagged via staff discretion.'
+  };
+
+  if (existingIdx >= 0) {
+    state.blacklistedClients[existingIdx] = record;
+  } else {
+    state.blacklistedClients.push(record);
+  }
+
+  // Push to Activity Log
+  const initials = (name || 'CL').split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  state.activityLog.unshift({
+    client: name,
+    initials: initials,
+    avatar: 'assets/avatar_male.png',
+    gender: 'male',
+    bgColor: '#EF4444',
+    service: `⛔ Staff Blacklist: ${reason}`,
+    time: 'Just now',
+    badgeClass: 'blacklisted',
+    badgeLabel: 'Blacklisted',
+    clientType: 'blacklisted'
+  });
+
+  saveSyncState(state);
+  loadAndRenderState();
+  syncClientTableBlacklist();
+
+  // If currently looking up this client in Front-Desk logger, refresh views
+  if (currentLookupPhone === phone) {
+    updateClientCareProfile(phone);
+    updateLoggerBlacklistUI(phone);
+  }
+
+  showToast(`⛔ ${name} flagged as Blacklisted. Salon Owner notified.`);
+}
+
+function removeClientFromBlacklist(phone) {
+  const state = getSyncState();
+  const clientObj = (state.blacklistedClients || []).find(c => c.phone === phone);
+  const clientName = clientObj ? clientObj.name : 'Client';
+
+  state.blacklistedClients = (state.blacklistedClients || []).filter(c => c.phone !== phone);
+
+  // Push reinstatement to Activity Log
+  const initials = (clientName || 'CL').split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  state.activityLog.unshift({
+    client: clientName,
+    initials: initials,
+    avatar: 'assets/avatar_male.png',
+    gender: 'male',
+    bgColor: '#0D9488',
+    service: '✓ Blacklist Flag Removed / Reinstated',
+    time: 'Just now',
+    badgeClass: 'booked',
+    badgeLabel: 'Reinstated',
+    clientType: ''
+  });
+
+  saveSyncState(state);
+  loadAndRenderState();
+  syncClientTableBlacklist();
+
+  if (currentLookupPhone === phone) {
+    updateClientCareProfile(phone);
+    updateLoggerBlacklistUI(phone);
+  }
+
+  showToast(`✓ ${clientName} reinstated and removed from Blacklist.`);
+}
+
+// ── Blacklist Modal Functions ──
+function openBlacklistModal(phone, name) {
+  const modal = document.getElementById('blacklistModalBackdrop');
+  if (!modal) return;
+  document.getElementById('blacklistModalPhone').value = phone;
+  document.getElementById('blacklistModalClientName').textContent = name || 'Client';
+  document.getElementById('blacklistModalPhoneDisplay').textContent = '+91 ' + phone.slice(0,5) + ' ' + phone.slice(5);
+  document.getElementById('blacklistNotesInput').value = '';
+  modal.style.display = 'flex';
+}
+
+function closeBlacklistModal() {
+  const modal = document.getElementById('blacklistModalBackdrop');
+  if (modal) modal.style.display = 'none';
+}
+
+function confirmBlacklistSubmit(e) {
+  if (e) e.preventDefault();
+  const phone = document.getElementById('blacklistModalPhone').value;
+  const name = document.getElementById('blacklistModalClientName').textContent;
+  const reason = document.getElementById('blacklistReasonSelect').value;
+  const notes = document.getElementById('blacklistNotesInput').value;
+
+  blacklistClient(phone, name, reason, notes, 'Priya M. (Stylist)');
+  closeBlacklistModal();
+}
+
+// ── Owner Blacklist Audit Modal Functions ──
+let currentAuditPhone = '';
+function openBlacklistAuditModal(phone) {
+  currentAuditPhone = phone;
+  const modal = document.getElementById('blacklistAuditModalBackdrop');
+  if (!modal) return;
+
+  const record = getBlacklistRecord(phone) || {
+    phone: phone,
+    name: (clientRegistry.find(c => c.phone === phone)?.name) || 'Client',
+    reason: 'Repeated No-Show / Late Cancellation (3+ times)',
+    flaggedBy: 'Priya M. (Stylist)',
+    date: '12 Sep 2026',
+    notes: 'Booked prime weekend slots and failed to confirm or answer WhatsApp reminders.'
+  };
+
+  document.getElementById('auditClientName').textContent = record.name;
+  document.getElementById('auditClientPhone').textContent = '+91 ' + phone.slice(0,5) + ' ' + phone.slice(5);
+  document.getElementById('auditFlaggedBy').textContent = record.flaggedBy;
+  document.getElementById('auditDate').textContent = record.date;
+  document.getElementById('auditReason').textContent = record.reason;
+  document.getElementById('auditNotes').textContent = record.notes;
+
+  modal.style.display = 'flex';
+}
+
+function closeBlacklistAuditModal() {
+  const modal = document.getElementById('blacklistAuditModalBackdrop');
+  if (modal) modal.style.display = 'none';
+}
+
+function reinstateFromAuditModal() {
+  if (currentAuditPhone) {
+    removeClientFromBlacklist(currentAuditPhone);
+    closeBlacklistAuditModal();
+  }
+}
+
+// ── Front-Desk Logger Blacklist UI Update Helper ──
+function updateLoggerBlacklistUI(phone) {
+  const bInfo = getBlacklistRecord(phone);
+  const alertBox = document.getElementById('returningBlacklistAlert');
+  const alertReason = document.getElementById('returningBlacklistReason');
+  const btnFlag = document.getElementById('btnFlagReturning');
+  const badgeWrap = document.getElementById('foundClientBadgeWrap');
+
+  if (bInfo) {
+    if (alertBox) alertBox.style.display = 'flex';
+    if (alertReason) alertReason.textContent = `Flagged by ${bInfo.flaggedBy} on ${bInfo.date} • Reason: ${bInfo.reason}`;
+    if (btnFlag) btnFlag.style.display = 'none';
+    if (badgeWrap) badgeWrap.innerHTML = '<span class="cx-badge cx-badge--blacklisted" style="margin-left:4px;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>BLACKLISTED</span>';
+  } else {
+    if (alertBox) alertBox.style.display = 'none';
+    if (btnFlag) btnFlag.style.display = 'inline-flex';
+    if (badgeWrap) badgeWrap.innerHTML = '';
+  }
+}
+
+// ── Sync Client CRM Table Rows with Blacklist State ──
+function syncClientTableBlacklist() {
+  const state = getSyncState();
+  const rows = document.querySelectorAll('#clientMasterTable .client-row');
+  
+  rows.forEach(row => {
+    const phone = row.getAttribute('data-phone');
+    if (!phone) return;
+
+    const bInfo = (state.blacklistedClients || []).find(c => c.phone === phone);
+    const nameCell = row.querySelector('td:first-child .client-name');
+    const statusCell = row.querySelector('td:nth-child(8)');
+    const actionCell = row.querySelector('td:last-child');
+
+    if (bInfo) {
+      row.setAttribute('data-status', 'blacklisted');
+      row.classList.add('row-blacklisted');
+
+      if (nameCell && !nameCell.querySelector('.cx-badge--blacklisted')) {
+        const clientName = bInfo.name;
+        nameCell.innerHTML = `${clientName} <span class="cx-badge cx-badge--blacklisted"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>BLACKLISTED</span>`;
+      }
+
+      if (statusCell) {
+        statusCell.innerHTML = `<span class="status-badge blacklisted" style="font-size:10px; display:inline-flex; align-items:center; gap:4px;">
+          <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+          Staff Blacklisted
+        </span>`;
+      }
+
+      if (actionCell) {
+        actionCell.innerHTML = `<button type="button" class="btn-review-flag" onclick="openBlacklistAuditModal('${phone}')">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Review Flag
+        </button>`;
+      }
+    } else {
+      // Not blacklisted
+      row.classList.remove('row-blacklisted');
+      if (row.getAttribute('data-status') === 'blacklisted') {
+        row.setAttribute('data-status', 'rebooked');
+      }
+      if (nameCell && nameCell.querySelector('.cx-badge--blacklisted')) {
+        nameCell.querySelector('.cx-badge--blacklisted').remove();
+      }
+      if (actionCell && actionCell.querySelector('.btn-review-flag')) {
+        const cName = row.querySelector('td:first-child .client-name')?.textContent.replace(/VIP|NEW|BLACKLISTED/g, '').trim() || 'Client';
+        actionCell.innerHTML = `<button type="button" class="btn-flag-blacklist" onclick="openBlacklistModal('${phone}', '${cName}')">
+          Flag Client
+        </button>`;
+      }
+    }
+  });
+}
+
+// ── LocalStorage Cross-Page Sync State Management ──
+
 const DEFAULT_STATE = {
   ownerStats: {
     rebooks: 144,
@@ -4689,13 +5366,24 @@ const DEFAULT_STATE = {
       botTouchpoints: 142
     }
   },
+  blacklistedClients: [
+    {
+      phone: "9876544321",
+      name: "Rahul K.",
+      reason: "Repeated No-Show / Late Cancellation (3+ times)",
+      flaggedBy: "Priya M. (Stylist)",
+      date: "12 Sep 2026",
+      notes: "Booked prime weekend slots and failed to confirm or answer WhatsApp reminders."
+    }
+  ],
   activityLog: [
-    { client: "Neha K.", initials: "NK", avatar: "assets/avatar_female.png", gender: "female", bgColor: "", service: "Balayage & Gloss Touchup", time: "3 days ago", badgeClass: "booked", badgeLabel: "Booked" },
-    { client: "Ritu S.", initials: "RS", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#FFA800", service: "HydraFacial Glow", time: "5 days ago", badgeClass: "reordered", badgeLabel: "Reordered" },
-    { client: "Aman P.", initials: "AP", avatar: "assets/avatar_male.png", gender: "male", bgColor: "#64748B", service: "Haircut & Styling", time: "1 week ago", badgeClass: "pending", badgeLabel: "Pending" },
-    { client: "Simran D.", initials: "SD", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#22CCE2", service: "Root Touch-Up & Blowdry", time: "1 week ago", badgeClass: "booked", badgeLabel: "Booked" },
-    { client: "Tanya V.", initials: "TV", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#E03598", service: "Global Color & Keratin", time: "2 days ago", badgeClass: "reordered", badgeLabel: "Reordered" },
-    { client: "Kavita B.", initials: "KB", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#2F66EE", service: "Deluxe Pedicure — first visit", time: "Today", badgeClass: "new-client", badgeLabel: "New Client" }
+    { client: "Rahul K.", initials: "RK", avatar: "assets/avatar_male.png", gender: "male", bgColor: "#EF4444", service: "⛔ Staff Blacklist: Repeated No-Shows", time: "Yesterday", badgeClass: "blacklisted", badgeLabel: "Blacklisted", clientType: "blacklisted" },
+    { client: "Neha K.", initials: "NK", avatar: "assets/avatar_female.png", gender: "female", bgColor: "", service: "Balayage & Gloss Touchup", time: "3 days ago", badgeClass: "booked", badgeLabel: "Booked", clientType: "vip" },
+    { client: "Ritu S.", initials: "RS", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#FFA800", service: "HydraFacial Glow", time: "5 days ago", badgeClass: "reordered", badgeLabel: "Reordered", clientType: "" },
+    { client: "Aman P.", initials: "AP", avatar: "assets/avatar_male.png", gender: "male", bgColor: "#64748B", service: "Haircut & Styling", time: "1 week ago", badgeClass: "pending", badgeLabel: "Pending", clientType: "new" },
+    { client: "Simran D.", initials: "SD", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#22CCE2", service: "Root Touch-Up & Blowdry", time: "1 week ago", badgeClass: "booked", badgeLabel: "Booked", clientType: "" },
+    { client: "Tanya V.", initials: "TV", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#E03598", service: "Global Color & Keratin", time: "2 days ago", badgeClass: "reordered", badgeLabel: "Reordered", clientType: "vip" },
+    { client: "Kavita B.", initials: "KB", avatar: "assets/avatar_female.png", gender: "female", bgColor: "#2F66EE", service: "Deluxe Pedicure — first visit", time: "Today", badgeClass: "new-client", badgeLabel: "New Client", clientType: "new" }
   ]
 };
 
@@ -4703,7 +5391,11 @@ function getSyncState() {
   const saved = localStorage.getItem('glowstudio_data');
   if (saved) {
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (!parsed.blacklistedClients) {
+        parsed.blacklistedClients = JSON.parse(JSON.stringify(DEFAULT_STATE.blacklistedClients));
+      }
+      return parsed;
     } catch (e) {
       console.error('Error parsing glowstudio_data', e);
     }
@@ -4729,6 +5421,17 @@ function loadAndRenderState() {
   if (elNoShows) elNoShows.textContent = state.ownerStats.noShows;
   if (elRetail) elRetail.textContent = '₹' + state.ownerStats.retailSalesDriven.toLocaleString('en-IN');
   if (elServiceFee) elServiceFee.textContent = '₹' + state.ownerStats.serviceFee.toLocaleString('en-IN');
+
+  // Render Blacklist Counters for Owner
+  const bCount = (state.blacklistedClients || []).length;
+  const ownerBlacklistBadge = document.getElementById('ownerBlacklistBadge');
+  if (ownerBlacklistBadge) {
+    ownerBlacklistBadge.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg> ${bCount} Member${bCount === 1 ? '' : 's'} Blacklisted`;
+  }
+  const ownerRiskCount = document.getElementById('ownerRiskCount');
+  if (ownerRiskCount) {
+    ownerRiskCount.textContent = `${bCount} Member${bCount === 1 ? '' : 's'} Flagged`;
+  }
 
   // Render Staff Stats (Assuming Priya)
   const staff = state.staffStats.Priya;
@@ -4759,14 +5462,25 @@ function loadAndRenderState() {
       if (row.badgeClass === 'new-client') badgeSVG = '<svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>';
       else if (row.badgeClass === 'reordered') badgeSVG = '<svg viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2z"/></svg>';
       else if (row.badgeClass === 'pending') badgeSVG = '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>';
+      else if (row.badgeClass === 'blacklisted') badgeSVG = '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>';
 
       const isMale = row.gender === 'male' || (row.client && (row.client.toLowerCase().includes('aman') || row.client.toLowerCase().includes('rohit') || row.client.toLowerCase().includes('rahul') || row.client.toLowerCase().includes('vikram')));
       const avatarSrc = row.avatar || (isMale ? 'assets/avatar_male.png' : 'assets/avatar_female.png');
       const avatarHTML = `<img src="${avatarSrc}" alt="${row.client}">`;
 
+      // CX Badge (VIP Crown / NEW Sparkle / Blacklisted)
+      let cxBadgeHTML = '';
+      if (row.clientType === 'vip') {
+        cxBadgeHTML = ' <span class="cx-badge cx-badge--vip"><svg viewBox="0 0 24 24"><path d="M2.5 18.5h19v2h-19v-2zm1-1L1 7l6 4.5L12 3l5 8.5L23 7l-2.5 10.5h-17z"/></svg>VIP</span>';
+      } else if (row.clientType === 'new') {
+        cxBadgeHTML = ' <span class="cx-badge cx-badge--new"><svg viewBox="0 0 24 24"><path d="M12 2l1.09 3.41L16.5 4l-1.41 3.41L18.5 8.5l-3.41 1.09L16.5 13l-3.41-1.41L12 15l-1.09-3.41L7.5 13l1.41-3.41L5.5 8.5l3.41-1.09L7.5 4l3.41 1.41L12 2zm-6 14l.72 2.22L9 17.5l-1.28.72L8.44 21 6 19.72 3.56 21l.72-2.78L3 17.5l2.28-.28L6 16zm12 0l.72 2.22L21 17.5l-1.28.72L20.44 21 18 19.72 15.56 21l.72-2.78L15 17.5l2.28-.28L18 16z"/></svg>NEW</span>';
+      } else if (row.clientType === 'blacklisted' || row.badgeClass === 'blacklisted') {
+        cxBadgeHTML = ' <span class="cx-badge cx-badge--blacklisted"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>BLACKLISTED</span>';
+      }
+
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td><div class="client-cell"><div class="client-avatar">${avatarHTML}</div><span>${row.client}</span></div></td>
+        <td><div class="client-cell"><div class="client-avatar">${avatarHTML}</div><span>${row.client}${cxBadgeHTML}</span></div></td>
         <td>${row.service}</td>
         <td>${row.time}</td>
         <td><span class="status-badge ${row.badgeClass}">${badgeSVG} ${row.badgeLabel}</span></td>
@@ -4777,6 +5491,9 @@ function loadAndRenderState() {
     const countEl = document.getElementById('activityCount');
     if (countEl) countEl.textContent = `${state.activityLog.length} Interactions`;
   }
+
+  // Ensure table rows match blacklist state
+  syncClientTableBlacklist();
 }
 
 // Initial Render
